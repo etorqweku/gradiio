@@ -1,15 +1,13 @@
 import joblib 
 import pandas as pd
-import numpy as np
 import gradio as gr
-import pandas as pd
 import numpy as np
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_selection import SelectKBest
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import Pipeline
-from sklearn.utils.class_weight import compute_class_weight
+#from sklearn.linear_model import LogisticRegression
+#from sklearn.feature_selection import SelectKBest
+#from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+#from sklearn.impute import SimpleImputer
+#from sklearn.pipeline import Pipeline
+#from sklearn.utils.class_weight import compute_class_weight
 import gradio as gr
 import joblib
 import warnings
@@ -76,11 +74,9 @@ output = gr.outputs.HighlightedText(color_map={
 
 ##building my interface and wrapping my model in the function
 
-##using gradio blocks to beautify my output
+gui= gr.Blocks() ##instatiating my blocks class
 
-block= gr.Blocks() ##instatiating my blocks class
-
-with block:
+with gui:
     gr.Markdown(""" # Welcome to My Customer Churn Prediction App""")
     
     input=[gr.inputs.Slider(minimum=0, maximum= 1, step=1, label="SeniorCitizen: Select 1 for Yes and 0 for No"),
@@ -109,6 +105,6 @@ with block:
      
     predict_btn.click(fn= predict_churn, inputs= input, outputs=output)
 
-block.launch(share=True)
+gui.launch(share=True)
     
 
