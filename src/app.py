@@ -35,9 +35,6 @@ def classify(num):
         return "Customer will churn"
 
 
-"""creating a function for my gradion fn
-defining my parameters which my fucntion will accept, and are the same as the features I trained my model on"""
-
 
 def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
                   OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
@@ -45,7 +42,7 @@ def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
                   PaymentMethod, MonthlyCharges, TotalCharges): 
 
      
-     ##in the code below, I am created a list of my input features
+##create a list of my input features
 
     input_data = [
         SeniorCitizen, Partner, Dependents, tenure, InternetService,
@@ -53,7 +50,7 @@ def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
         StreamingTV, StreamingMovies, Contract, PaperlessBilling,
         PaymentMethod, MonthlyCharges, TotalCharges
     ]    
-##I am changing my features into a dataframe since that is how I trained my model
+##changing features into a dataframe
 
     input_df = pd.DataFrame([input_data], columns=[
         "SeniorCitizen", "Partner", "Dependents", "tenure", "InternetService",
@@ -63,25 +60,25 @@ def predict_churn(SeniorCitizen, Partner, Dependents, tenure, InternetService,
     ])
 
 
-    pred = model.predict(input_df) ##I am making a prediction on the input data.
+    pred = model.predict(input_df) ## prediction on the input data.
 
-    output = classify(pred[0]) ## I am passing the first predction through my classify function I created earlier
+    output = classify(pred[0]) 
 
     if output == "Customer will not Churn":
         return [(0, output)]
     else:
-        return [(1, output)]   ##setting my function to return the binary classification and the written output
-
+        return [(1, output)]   
+    
 output = gr.outputs.HighlightedText(color_map={
     "Customer will not Churn": "green",
     "Customer will churn": "red"
-}) ##assigning colors to the respective output 
+}) ##assigning colors to output 
 
 ##building my interface and wrapping my model in the function
 
 ##using gradio blocks to beautify my output
 
-block= gr.Blocks(theme= "freddyaboulton/dracula_revamped") ##instatiating my blocks class
+block= gr.Blocks() ##instatiating my blocks class
 
 with block:
     gr.Markdown(""" # Welcome to My Customer Churn Prediction App""")
