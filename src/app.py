@@ -1,15 +1,6 @@
 import joblib 
 import pandas as pd
 import gradio as gr
-import numpy as np
-#from sklearn.linear_model import LogisticRegression
-#from sklearn.feature_selection import SelectKBest
-#from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
-#from sklearn.impute import SimpleImputer
-#from sklearn.pipeline import Pipeline
-#from sklearn.utils.class_weight import compute_class_weight
-import gradio as gr
-import joblib
 import warnings
 
 warnings.filterwarnings("ignore")
